@@ -75,7 +75,13 @@ public static class WindowsAppCatalog {
 }
 public static class WindowsAppsPicker {
  const BindingFlags Flags=BindingFlags.Instance|BindingFlags.Public|BindingFlags.NonPublic;
- static object Field(object o,string n)=>o.GetType().GetField(n,Flags)!.GetValue(o)!;
+ static object Field(object o,string n) {
+  var field=o.GetType().GetField(n,Flags);
+  // The recovered Core source spells compiler-generated <>4__this literally as _003C_003E4__this.
+  if(field==null&&n=="<>4__this")field=o.GetType().GetField("_003C_003E4__this",Flags);
+  if(field==null)throw new MissingFieldException(o.GetType().FullName,n);
+  return field.GetValue(o)!;
+ }
  public static void Attach(object editContext) {
   if(Convert.ToInt32(Field(editContext,"kind"))!=0)return;
   Form dialog=(Form)Field(editContext,"dialog");TextBox title=(TextBox)Field(editContext,"title"),target=(TextBox)Field(editContext,"target");
@@ -100,7 +106,7 @@ public static class WindowsAppsPicker {
   List<WindowsApp> apps=new();
   public WindowsApp? SelectedApp {get;private set;}
   public Picker(bool dark) {
-   Text="Buscar apps de Windows · AccessShot 2.12";Width=800;Height=590;MinimumSize=new Size(660,430);StartPosition=FormStartPosition.CenterParent;Font=new Font("Segoe UI",10);
+   Text="Buscar apps de Windows · AccessShot 2.14";Width=800;Height=590;MinimumSize=new Size(660,430);StartPosition=FormStartPosition.CenterParent;Font=new Font("Segoe UI",10);
    Color bg=dark?Color.FromArgb(20,23,30):Color.FromArgb(235,240,245),fg=dark?Color.FromArgb(237,242,252):Color.FromArgb(28,45,67),surface=dark?Color.FromArgb(32,38,49):Color.White;
    BackColor=bg;ForeColor=fg;search.BackColor=surface;search.ForeColor=fg;list.BackColor=surface;list.ForeColor=fg;
    var layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(16),ColumnCount=1,RowCount=7};
