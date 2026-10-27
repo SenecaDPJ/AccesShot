@@ -1,0 +1,10 @@
+AccesShot 2.13 — Windows 11 x64
+
+Abre AccessShot.exe en esta carpeta. Conserva la carpeta Aplicacion junto al ejecutable.
+La distribución incluye el runtime .NET 8 necesario.
+
+En un perfil nuevo aparece una disposición de ejemplo con una etiqueta y una URL de 90 × 50 fuera de la vista inicial. El aviso indica ambos objetos. Los ejemplos solo usan direcciones públicas. Si ya tienes una disposición guardada, se conserva sin cambios.
+
+Los datos se guardan por usuario en %APPDATA%\AccessShot\entries.json. No incluyas ese archivo en GitHub ni lo compartas: puede contener rutas y URL personales.
+
+© David De Prado · 2026 · MIT

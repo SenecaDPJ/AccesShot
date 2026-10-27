@@ -30,3 +30,9 @@ La primera subida es del binario validado, documentación y fuentes disponibles.
 Datos: `%APPDATA%\AccessShot\entries.json`. Los metadatos `__AccessShotStyle` conservan la condición de tema y sobrevuelo junto al objeto, también al cambiar su capa.
 
 Las apps modernas guardan `shell:AppsFolder\<AppID>`. URL y GitHub conservan confirmación antes de abrir el navegador. Los números de metadatos internos históricos no se deben «corregir» en el ZIP validado.
+
+## Reconstrucción 2.13
+
+`src/Core` contiene el núcleo recuperado de la 2.12, adaptado y compilado para .NET 8. La 2.13 incorpora una disposición pública de ejemplo solo cuando aún no existe `entries.json`. La compilación de los módulos y el núcleo, así como la prueba de arranque y guardado en un perfil aislado, están registradas en [VALIDACION_2.13.md](VALIDACION_2.13.md). El lanzador nativo y el supervisor de la 2.12 se conservan.
+
+La reconstrucción requiere el SDK de .NET 8 o un SDK más reciente que pueda restaurar sus paquetes de referencia desde NuGet. Para compilar los tres proyectos, ejecuta `scripts/Build-2.13.ps1`. La publicación portátil usa `dotnet publish` del núcleo para `win-x64` con `--self-contained true` y combina los dos ejecutables de inicio de la 2.12. La 2.12 archivada no se altera.
