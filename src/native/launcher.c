@@ -32,6 +32,6 @@ void start(void) {
  ((Close)(*(void**)(imports+528)))(pi.process);
  ((Exit)(*(void**)(imports+536)))(0);
 fail:
- ((Message)(*(void**)(imports+560)))(0,(const W*)L"No se pudo iniciar AccessShot. Extrae todo el ZIP y conserva la carpeta Aplicacion junto a AccessShot.exe.",(const W*)L"AccessShot 2.15",0x10);
+ ((Message)(*(void**)(imports+560)))(0,(const W*)L"No se pudo iniciar AccessShot. Extrae todo el ZIP y conserva la carpeta Aplicacion junto a AccessShot.exe.",(const W*)L"AccessShot 2.16",0x10);
  ((Exit)(*(void**)(imports+536)))(1);
 }
