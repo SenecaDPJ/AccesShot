@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <AssemblyName>AccessShotCore</AssemblyName>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <Nullable>enable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <EnableNETAnalyzers>false</EnableNETAnalyzers><NoWarn>$(NoWarn);WFO1000</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AccessShotStyles"><HintPath>..\Styles\bin\Release\net8.0-windows\AccessShotStyles.dll</HintPath></Reference>
+    <Reference Include="AccessShotWindowsApps"><HintPath>..\WindowsApps\bin\Release\net8.0-windows\AccessShotWindowsApps.dll</HintPath></Reference>
+  </ItemGroup>
+</Project>
