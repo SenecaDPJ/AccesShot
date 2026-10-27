@@ -1,4 +1,9 @@
-# Historial de cambios
+# AccesShot — Cambios
+
+## 2.16 — 2026-10-27
+- Reubica el aviso de objetos fuera de la vista en la zona superior del lienzo, sin cubrir la firma.
+- Restaura el icono de AccesShot en la ventana y la barra de tareas.
+- Sustituye los ejemplos iniciales por el JSON facilitado por el autor; solo se aplica a perfiles nuevos y conserva las configuraciones existentes.
 
 ## 2.15 — 2026-10-27
 

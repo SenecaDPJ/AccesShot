@@ -1,4 +1,4 @@
-# AccesShot 2.15
+# AccesShot 2.16
 
 [Español](README.md) · [English](README.en.md)
 
@@ -15,11 +15,11 @@ AccesShot brings your programs, modern Windows apps and web pages together on on
 - 🖥️ A customizable canvas that spans your available monitors.
 - 🎨 Style your shortcuts with colors, effects, sizes and layers.
 
-**Windows 11 x64 · Portable · v2.15 · MIT**
+**Windows 11 x64 · Portable · v2.16 · MIT**
 
 ## Download and start
 
-[Download the 2.15 release](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.15)
+[Download the 2.16 release](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.16)
 
 This private repository requires access to download the release.
 
@@ -51,15 +51,15 @@ Choose **CREATE → APPLICATION → Find Windows apps…** to search apps instal
 
 ## Data
 
-Per-user configuration is stored in `%APPDATA%\AccessShot\entries.json`. The last undoable action and backup preferences are stored in companion files. On first migration, AccesShot keeps a `.pre-2.15.bak` copy. JSON backups can contain personal app paths and URLs, so keep them private and out of Git.
+Per-user configuration is stored in `%APPDATA%\AccessShot\entries.json`. On a new profile, AccesShot creates it from `assets/initial-layout.json`; existing configurations are preserved. The last undoable action and backup preferences are stored in companion files. On first migration, AccesShot keeps a `.pre-2.15.bak` copy. Personal backups can contain app paths and URLs, so keep them private and out of Git. The author-provided starter layout is included in this private repository.
 
 A backup contains shortcuts and their layout, not the programs or files they point to. Paths may need changes on another PC.
 
 ## Project status
 
-Version 2.15 adds rotation, group selection, one-step recovery, backups and the Options panel. Integration into `main` and the release must stay in sync: the `main` README points to release 2.15. See the [release handoff](docs/ENTREGA_2.15.md), [validation](docs/VALIDACION_2.15.md) and [development notes](docs/DESARROLLO.md).
+Version 2.16 moves the off-screen notice to the top of the canvas, restores the window and taskbar icons, and updates the starter layout for new profiles. Existing configurations are preserved. See the [release handoff](docs/ENTREGA_2.16.md), [validation](docs/VALIDACION_2.16.md) and [development notes](docs/DESARROLLO.md).
 
-Releases 2.12, 2.13 and 2.14 remain available. AccesShot is portable for Windows 11 x64.
+Releases 2.12, 2.13, 2.14 and 2.15 remain available. AccesShot is portable for Windows 11 x64.
 
 ## Author and license
 
