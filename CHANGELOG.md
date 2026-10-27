@@ -1,4 +1,19 @@
-# Historial
+# Historial de cambios
+
+## 2.15 — 2026-10-27
+
+- Giro en cuartos de vuelta con texto legible y etiquetas verticales.
+- Selección rectangular, Ctrl + clic y movimiento de grupos.
+- Confirmación detallada de borrado colectivo y recuperación de la última edición.
+- Opciones con Ctrl + O y copias JSON con restauración.
+- README de `main` y flujo de publicación sincronizados con la release 2.15.
+
+
+## 2.14 — 2026-10-27
+
+- Corregida la reflexión del selector de apps modernas, compatible con el nombre del campo del núcleo recuperado.
+- Añadida prueba de integración de `WindowsAppsPicker.Attach` y conservadas las pruebas de diseño inicial y persistencia.
+
 
 ## 2.13 — 2026-10-27
 

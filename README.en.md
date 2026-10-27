@@ -1,4 +1,4 @@
-# AccesShot 2.14
+# AccesShot 2.15
 
 [Español](README.md) · [English](README.en.md)
 
@@ -11,34 +11,58 @@ Apps, links and labels, arranged on a canvas shaped around your screens.
 AccesShot brings your programs, modern Windows apps and web pages together on one screen. Create shortcuts, organize them with labels and layers, and customize their look with colors and themes. It is portable and designed for Windows 11 x64.
 
 - 🖱️ Keep all your shortcuts close at hand, whatever their source.
-- 🗂️ Organize your way, without getting boxed in.
-- 🖥️ A customizable canvas with room across your available monitors.
+- 🗂️ Organize your way, without annoying restrictions.
+- 🖥️ A customizable canvas that spans your available monitors.
 - 🎨 Style your shortcuts with colors, effects, sizes and layers.
 
-## Quick start
+**Windows 11 x64 · Portable · v2.15 · MIT**
 
-1. Download the [2.14 release](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.14); this private repository requires access.
-2. Extract the complete ZIP and open **AccessShot.exe**.
+## Download and start
+
+[Download the 2.15 release](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.15)
+
+This private repository requires access to download the release.
+
+1. Download and extract the complete application ZIP.
+2. Open **AccessShot.exe** in the top-level folder.
 3. Keep **Aplicacion** beside it. The required runtime is included.
 
 ## Features
 
-- Rounded app tiles, capsule labels and arrow-shaped URLs.
-- Local modern-app search, with filters for Photos, Snipping Tool, Phone Link and WhatsApp when installed for the current user.
-- Move, resize, edit text and colors; move forward/backward or bring to front/send to back.
-- Default colors follow the theme until background or text is customized. Hover colors are independently configurable.
-- Confirmation before opening URL shortcuts or the GitHub profile.
+| Object | Shape | Color family |
+|---|---|---|
+| App | Rounded rectangle | Orange |
+| Label | Capsule | Magenta |
+| URL | Arrow tip | Cyan |
 
-Per-user data: `%APPDATA%\AccessShot\entries.json`. Keep personal paths and URLs out of Git. New profiles receive a public sample layout, including one small label and URL outside the initial view; existing layouts are preserved.
+- Traditional programs, modern Windows apps and web links.
+- Group movement: drag a selection rectangle in Move or Delete mode; Ctrl-click to add or remove objects.
+- 90-degree rotations. Shapes and URL arrows rotate while text stays horizontal. Labels can be created vertically.
+- Detailed confirmation before deleting a group. Ctrl+Z restores the latest canvas edit.
+- Resize objects, edit colors and text, and arrange layers.
+- JSON backups from the canvas button; Options can change the folder or restore a backup.
+- Ctrl+O opens Options inside AccesShot.
+- Dark and light themes, selection highlighting and hover colors.
+- Confirmation before opening URLs or GitHub.
 
-## Release and source status
+## Modern Windows apps
 
-The 2.14 release fixes the Windows apps picker integration and retains the 2.13 starter layout. The 2.12 release remains available unchanged. See [validation](docs/VALIDACION_2.14.md).
+Choose **CREATE → APPLICATION → Find Windows apps…** to search apps installed for your user, including Photos, Snipping Tool, Phone Link and WhatsApp. The regular file picker remains available.
 
-Version 2.12 was tested and approved by the author. Its release ZIP is preserved byte-for-byte. Editable module and native launcher sources are included, alongside recovered core reference material. The 2.14 rebuilt core and the Windows apps picker integration are tested; a complete regression review of every historical function is still pending. See [development notes](docs/DESARROLLO.md).
+## Data
 
-Repository: **AccesShot**. Historical executable names remain **AccessShot** for compatibility.
+Per-user configuration is stored in `%APPDATA%\AccessShot\entries.json`. The last undoable action and backup preferences are stored in companion files. On first migration, AccesShot keeps a `.pre-2.15.bak` copy. JSON backups can contain personal app paths and URLs, so keep them private and out of Git.
+
+A backup contains shortcuts and their layout, not the programs or files they point to. Paths may need changes on another PC.
+
+## Project status
+
+Version 2.15 adds rotation, group selection, one-step recovery, backups and the Options panel. Integration into `main` and the release must stay in sync: the `main` README points to release 2.15. See the [release handoff](docs/ENTREGA_2.15.md), [validation](docs/VALIDACION_2.15.md) and [development notes](docs/DESARROLLO.md).
+
+Releases 2.12, 2.13 and 2.14 remain available. AccesShot is portable for Windows 11 x64.
+
+## Author and license
 
 Copyright © 2026 David De Prado (Seneca DPJ). [MIT](LICENSE). [GitHub profile](https://github.com/SenecaDPJ).
 
-Independent project, not affiliated with Microsoft or WhatsApp. Third-party components retain their own licenses.
+Independent project, not affiliated with Microsoft or WhatsApp. See [third-party notices](THIRD_PARTY_NOTICES.md).
