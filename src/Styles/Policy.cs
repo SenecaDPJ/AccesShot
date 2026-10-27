@@ -68,15 +68,18 @@ public static class StylePolicy {
    }
   }
  }
- public static void Save(object form) {
-  IList entries=(IList)Field(form,"entries");string path=(string)Field(form,"dataFile");
-  JsonArray arr=(JsonArray)JsonNode.Parse(File.ReadAllText(path))!;
-  if(arr.Count!=entries.Count)throw new InvalidDataException("No coincide el número de estilos y objetos.");
+ public static string Serialize(object form) {
+  IList entries=(IList)Field(form,"entries");
+  var options=new JsonSerializerOptions {WriteIndented=true};
+  JsonArray arr=JsonNode.Parse(JsonSerializer.Serialize(entries,entries.GetType(),options)) as JsonArray ?? new JsonArray();
   for(int i=0;i<arr.Count;i++) {
    CreationStyle s=State(entries[i]!);
    arr[i]!["__AccessShotStyle"]=new JsonObject { ["Version"]=1,["ThemeColors"]=s.ThemeColors,["HoverBackground"]=s.HoverBackground};
   }
-  string temp=path+".style.tmp";
-  File.WriteAllText(temp,arr.ToJsonString(new JsonSerializerOptions {WriteIndented=true}));File.Move(temp,path,true);
+  return arr.ToJsonString(options);
+ }
+ public static void Save(object form) {
+  string path=(string)Field(form,"dataFile");string text=Serialize(form);Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+  string temp=path+".tmp";File.WriteAllText(temp,text);File.Move(temp,path,true);
  }
 }

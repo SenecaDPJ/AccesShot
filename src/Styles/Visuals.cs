@@ -6,7 +6,7 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 using System.Runtime.CompilerServices;
 public static class AccessShotVisuals {
- sealed class TileState {public bool Hover;public int Width=-1,Height=-1,Kind=-1;}
+ sealed class TileState {public bool Hover;public int Width=-1,Height=-1,Kind=-1,Orientation=-1;}
  static readonly ConditionalWeakTable<Control,TileState> tiles=new();
  static TileState State(Control c)=>tiles.GetValue(c,_=>new());
  public static GraphicsPath Shape(RectangleF r,int kind) {
@@ -24,14 +24,24 @@ public static class AccessShotVisuals {
  }
  public static void Paint(Control tile,PaintEventArgs args,object entry,bool dark,bool selected) {
   if(tile.Width<4 || tile.Height<4)return;
-  TileState state=State(tile);int kind=StylePolicy.Kind(entry);
-  if(state.Width!=tile.Width || state.Height!=tile.Height || state.Kind!=kind) {
-   state.Width=tile.Width;state.Height=tile.Height;state.Kind=kind;
-   using var clip=Shape(new RectangleF(0,0,tile.Width,tile.Height),kind);tile.Region=new Region(clip);
+  TileState state=State(tile);int kind=StylePolicy.Kind(entry),orientation=((StylePolicy.Get<int>(entry,"Orientation")%360)+360)%360;
+  int width=StylePolicy.Get<int>(entry,"Width"),height=StylePolicy.Get<int>(entry,"Height");
+  if(state.Width!=tile.Width || state.Height!=tile.Height || state.Kind!=kind || state.Orientation!=orientation) {
+   state.Width=tile.Width;state.Height=tile.Height;state.Kind=kind;state.Orientation=orientation;
+   using var regionPath=Shape(new RectangleF(0,0,width,height),kind);
+   if(orientation!=0) {
+    using var rotate=new Matrix();rotate.RotateAt(orientation,new PointF(width/2f,height/2f));regionPath.Transform(rotate);
+    RectangleF b=regionPath.GetBounds();using var normalize=new Matrix();normalize.Translate(-b.X,-b.Y);regionPath.Transform(normalize);
+   }
+   tile.Region=new Region(regionPath);
   }
   Graphics g=args.Graphics;g.SmoothingMode=SmoothingMode.AntiAlias;
+  using var path=Shape(new RectangleF(1,1,width-3,height-3),kind);
+  if(orientation!=0) {
+   using var rotate=new Matrix();rotate.RotateAt(orientation,new PointF(width/2f,height/2f));path.Transform(rotate);
+   RectangleF b=path.GetBounds();using var normalize=new Matrix();normalize.Translate(-b.X,-b.Y);path.Transform(normalize);
+  }
   TileColors colors=StylePolicy.Colors(entry,dark,state.Hover,selected);
-  using var path=Shape(new RectangleF(1,1,tile.Width-3,tile.Height-3),kind);
   using var brush=new SolidBrush(colors.Background);using var pen=new Pen(colors.Border,selected?2.5f:1.2f);
   g.FillPath(brush,path);g.DrawPath(pen,path);
   string title=StylePolicy.Get<string>(entry,"Title");
@@ -66,3 +76,4 @@ public static class AccessShotVisuals {
   try {StylePolicy.Load(form);}catch(Exception ex) {MessageBox.Show((IWin32Window)form,"No se pudieron leer los estilos guardados: "+ex.Message,"AccessShot 2.11",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
  }
 }
+
