@@ -1,0 +1,10 @@
+AccesShot 2.14 — Windows 11 x64
+
+Abre AccessShot.exe en esta carpeta. Conserva la carpeta Aplicacion junto al ejecutable.
+La distribución incluye el runtime .NET 8 necesario.
+
+Esta versión corrige el fallo que impedía abrir «Buscar apps de Windows» al crear una aplicación instalada. También conserva la disposición de ejemplo de la 2.13 en perfiles nuevos; los datos existentes no se modifican.
+
+Los datos se guardan por usuario en %APPDATA%\AccessShot\entries.json. No incluyas ese archivo en GitHub ni lo compartas: puede contener rutas y URL personales.
+
+© David De Prado · 2026 · MIT

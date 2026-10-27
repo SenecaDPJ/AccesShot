@@ -4,9 +4,9 @@
   "repository": "SenecaDPJ/AccesShot",
   "visibility": "private",
   "default_branch": "main",
-  "version": "2.13",
-  "tag": "v2.13",
-  "release_title": "AccesShot 2.13 — Windows 11 x64",
+  "version": "2.15",
+  "tag": "v2.15",
+  "release_title": "AccesShot 2.15 — Windows 11 x64",
   "author": "David De Prado",
   "signature": "© David De Prado · 2026",
   "copyright": "Copyright (c) 2026 David De Prado (Seneca DPJ)",
@@ -14,17 +14,15 @@
   "description": "Organiza tus programas, aplicaciones de Windows y páginas web en un panel visual con etiquetas, colores y capas. Portátil para Windows 11 x64.",
   "topics": [
     "windows-11",
-    "launcher",
     "winforms",
     "csharp",
     "portable",
     "appsfolder",
     "shortcuts"
   ],
-  "release_asset": "AccessShot-2.13-portable-Windows-x64.zip",
-  "sha256": "e4c7a0e694af4e0de74d0b35314bd2bcf1bb44812277eb6142cd23fb37688e5e",
-  "size_bytes": 72651535,
-  "author_verified": true,
-  "repository_created": true,
-  "full_core_source_build_verified": true
+  "release_asset": "AccessShot-2.15-portable-Windows-x64.zip",
+  "sha256": "517dcdfdab0a1a960c0b1b9c83c1d57f216e1f4aa1955bdb422ba8e1ecf1b4ed",
+  "size_bytes": 72526745,
+  "previous_release_preserved": true,
+  "release_status": "local_package_built_pending_main_integration"
 }

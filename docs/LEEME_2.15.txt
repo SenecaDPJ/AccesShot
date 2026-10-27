@@ -1,0 +1,15 @@
+AccesShot 2.15 — Windows 11 x64
+
+Extrae el ZIP completo. Abre AccessShot.exe y conserva la carpeta Aplicacion junto al ejecutable.
+
+Novedades:
+- Giro de formas en cuartos de vuelta; el texto permanece horizontal.
+- Etiquetas nuevas horizontales o verticales.
+- Selección por rectángulo, Ctrl + clic y movimiento en grupo.
+- Confirmación detallada antes de eliminar grupos.
+- Ctrl + Z recupera la última edición del lienzo cuando la instantánea coincide.
+- Botón de copia JSON en el lienzo. Ctrl + O abre Opciones para elegir carpeta o restaurar una copia.
+
+La configuración por usuario se guarda en %APPDATA%\AccessShot. Las copias JSON pueden incluir rutas y URL personales; mantenlas en una carpeta privada.
+
+© David De Prado · 2026 · MIT

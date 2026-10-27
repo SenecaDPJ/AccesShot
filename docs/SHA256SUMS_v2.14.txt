@@ -1,0 +1,2 @@
+80631d5e79dc568dc66416a6dedb9e6febca715f91a62dbcc25e22727e59c24f  AccessShot-2.14-portable-Windows-x64.zip
+6d8713637be2bb1d8ad30013668f5ebd0376494cbb52b5e449548b6de44d0c63  AccesShot-2.14-source-patch.zip

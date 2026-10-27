@@ -36,3 +36,14 @@ Las apps modernas guardan `shell:AppsFolder\<AppID>`. URL y GitHub conservan con
 `src/Core` contiene el núcleo recuperado de la 2.12, adaptado y compilado para .NET 8. La 2.13 incorpora una disposición pública de ejemplo solo cuando aún no existe `entries.json`. La compilación de los módulos y el núcleo, así como la prueba de arranque y guardado en un perfil aislado, están registradas en [VALIDACION_2.13.md](VALIDACION_2.13.md). El lanzador nativo y el supervisor de la 2.12 se conservan.
 
 La reconstrucción requiere el SDK de .NET 8 o un SDK más reciente que pueda restaurar sus paquetes de referencia desde NuGet. Para compilar los tres proyectos, ejecuta `scripts/Build-2.13.ps1`. La publicación portátil usa `dotnet publish` del núcleo para `win-x64` con `--self-contained true` y combina los dos ejecutables de inicio de la 2.12. La 2.12 archivada no se altera.
+
+## Reconstrucción 2.14
+
+Corrige el nombre reflejado del campo que enlaza WindowsAppsPicker con el contexto de MainForm.EditEntry. WindowsAppsPicker.Attach acepta el nombre C# normal y el nombre escapado que conserva la fuente recuperada. La prueba de integración usa el tipo de cierre real del núcleo compilado y confirma que el botón del selector se incorpora al diálogo. La publicación 2.14 vuelve a compilar los módulos y el núcleo sobre la base portátil 2.12; la release 2.13 queda preservada.
+
+
+## Reconstrucción 2.15
+
+La 2.15 incorpora orientación, selección rectangular y movimiento de grupos, recuperación de la última edición, copias JSON y el panel de opciones. `src/Core/AssemblyInfo.cs` y la interfaz identifican la versión como 2.15. La serialización de objetos y estilos se genera como un único JSON antes de sustituir el archivo. El informe de comprobaciones y los puntos todavía pendientes están en [VALIDACION_2.15.md](VALIDACION_2.15.md).
+
+Para empaquetar usa `scripts/Build-2.15.ps1` con el ZIP portable 2.14 cuyo SHA-256 está fijado en el script. El script compila los módulos y el núcleo, publica para `win-x64`, conserva los lanzadores de la base y genera el ZIP con su suma. La integración con `main` y la creación del tag/release se realizan después del paquete; el procedimiento está en [ENTREGA_2.15.md](ENTREGA_2.15.md).
