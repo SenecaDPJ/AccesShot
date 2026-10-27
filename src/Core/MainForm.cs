@@ -122,7 +122,7 @@ internal sealed class MainForm : Form
 		Size = new Size(420, 62),
 		BackColor = Color.FromArgb(20, 25, 34),
 		BorderStyle = BorderStyle.FixedSingle,
-		Anchor = (AnchorStyles.Bottom | AnchorStyles.Right),
+		Anchor = (AnchorStyles.Top | AnchorStyles.Right),
 		Visible = false
 	};
 
@@ -272,12 +272,13 @@ internal sealed class MainForm : Form
 
 	public MainForm()
 	{
-		Text = "AccesShot 2.15";
+		Text = "AccesShot 2.16";
 		base.Width = 1120;
 		base.Height = 760;
 		MinimumSize = new Size(640, 480);
 		base.StartPosition = FormStartPosition.CenterScreen;
 		BackColor = Color.Black;
+		base.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath) ?? SystemIcons.Application;
 		ActionGroup actionGroup = new ActionGroup("CREAR", 3);
 		ActionGroup actionGroup2 = new ActionGroup("MODOS", 3);
 		ActionGroup actionGroup3 = new ActionGroup("OPCIONES", 2);
@@ -304,10 +305,11 @@ internal sealed class MainForm : Form
 		base.Controls.Add(canvas);
 		base.Controls.Add(bottomStrip);
 		base.Controls.Add(toolbar);
+		toolbar.SizeChanged += delegate { PositionOffscreenNotice(); };
+		base.Resize += delegate { PositionOffscreenNotice(); };
 		offscreenNotice.Controls.Add(offscreenText);
 		offscreenNotice.Controls.Add(closeNotice);
 		base.Controls.Add(offscreenNotice);
-		offscreenNotice.Location = new Point(Math.Max(8, base.ClientSize.Width - offscreenNotice.Width - 18), Math.Max(8, base.ClientSize.Height - offscreenNotice.Height - 18));
 		offscreenNotice.BringToFront();
 		signaturePanel.Controls.Add(signatureText);
 		signaturePanel.Controls.Add(githubHomeButton);
@@ -354,6 +356,7 @@ internal sealed class MainForm : Form
 		LoadPreferences();
 		base.Shown += delegate
 		{
+			PositionOffscreenNotice();
 			UpdateOffscreenNotice();
 		};
 		LoadEntries();
@@ -450,7 +453,7 @@ internal sealed class MainForm : Form
 	private void UpdateModeHint()
 	{
 		canvas.Cursor = (moveMode ? Cursors.SizeAll : (deleteMode ? Cursors.No : Cursors.Default));
-		Text = (moveMode ? "AccessShot 2.15 — Modo mover" : (deleteMode ? "AccessShot 2.15 — Modo eliminar" : "AccessShot 2.15"));
+		Text = (moveMode ? "AccessShot 2.16 — Modo mover" : (deleteMode ? "AccessShot 2.16 — Modo eliminar" : "AccessShot 2.16"));
 	}
 
 	private void LoadPreferences()
@@ -466,7 +469,7 @@ internal sealed class MainForm : Form
 	private void OpenOptions()
 	{
 		using Form dialog = new Form { Text = "Opciones de AccesShot", Width = 500, Height = 330, StartPosition = FormStartPosition.CenterParent, FormBorderStyle = FormBorderStyle.FixedDialog, MaximizeBox = false, MinimizeBox = false, ShowInTaskbar = false };
-		Label title = new Label { Text = "AccesShot 2.15", Left = 18, Top = 14, Width = 440, Height = 28, Font = new Font("Segoe UI", 13f, FontStyle.Bold) };
+		Label title = new Label { Text = "AccesShot 2.16", Left = 18, Top = 14, Width = 440, Height = 28, Font = new Font("Segoe UI", 13f, FontStyle.Bold) };
 		Label help = new Label { Text = "En MOVER o ELIMINAR, arrastra en el lienzo para seleccionar un grupo.\r\nCtrl + clic anade o quita un objeto. Ctrl + O abre estas opciones.\r\nLa recuperacion cubre la ultima edicion.", Left = 20, Top = 52, Width = 445, Height = 64 };
 		Label folder = new Label { Text = "Carpeta de copias: " + (string.IsNullOrWhiteSpace(backupDirectory) ? "(elige una al crear la primera copia)" : backupDirectory), Left = 20, Top = 120, Width = 445, Height = 38, AutoEllipsis = true };
 		Button undo = new Button { Text = "Deshacer última acción", Left = 20, Top = 170, Width = 210, Height = 34, Enabled = UndoAvailable() };
@@ -501,10 +504,10 @@ internal sealed class MainForm : Form
 			while (File.Exists(path)) path = Path.Combine(backupDirectory, $"AccesShot-config-{stamp}-{suffix++:00}.json");
 			WriteAtomically(path, payload);
 			if (File.ReadAllText(path) != payload) throw new IOException("La verificación de la copia no coincide.");
-			if (MessageBox.Show(this, "Copia de seguridad guardada correctamente. ¿Abrir la carpeta?", "AccesShot 2.15", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+			if (MessageBox.Show(this, "Copia de seguridad guardada correctamente. ¿Abrir la carpeta?", "AccesShot 2.16", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
 				Process.Start(new ProcessStartInfo { FileName = backupDirectory, UseShellExecute = true });
 		}
-		catch (Exception ex) { MessageBox.Show(this, "No se pudo crear la copia: " + ex.Message, "AccesShot 2.15", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+		catch (Exception ex) { MessageBox.Show(this, "No se pudo crear la copia: " + ex.Message, "AccesShot 2.16", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 	}
 
 	private void RestoreBackup()
@@ -523,7 +526,7 @@ internal sealed class MainForm : Form
 			catch { WriteAtomically(dataFile, before); LoadEntries(); throw; }
 			Render();
 		}
-		catch (Exception ex) { MessageBox.Show(this, "No se pudo restaurar la copia: " + ex.Message, "AccessShot 2.15", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+		catch (Exception ex) { MessageBox.Show(this, "No se pudo restaurar la copia: " + ex.Message, "AccessShot 2.16", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 	}
 
 	private void LoadEntries()
@@ -531,7 +534,23 @@ internal sealed class MainForm : Form
 		entries.Clear(); selectedEntries.Clear(); selected = null;
 		try
 		{
-			if (!File.Exists(dataFile)) entries.AddRange(CreateStarterEntries());
+			if (!File.Exists(dataFile))
+			{
+				string initialLayoutPath = Path.Combine(AppContext.BaseDirectory, "assets", "initial-layout.json");
+				if (File.Exists(initialLayoutPath))
+				{
+					string initialLayoutPayload = File.ReadAllText(initialLayoutPath);
+					List<Entry>? initialLayout = null;
+					try { initialLayout = JsonSerializer.Deserialize<List<Entry>>(initialLayoutPayload); } catch (JsonException) { }
+					if (initialLayout != null && initialLayout.Count > 0 && initialLayout.All(entry => Enum.IsDefined(entry.Kind) && entry.Width > 0 && entry.Height > 0))
+					{
+						WriteAtomically(dataFile, initialLayoutPayload);
+						entries.AddRange(initialLayout);
+					}
+					else entries.AddRange(CreateStarterEntries());
+				}
+				else entries.AddRange(CreateStarterEntries());
+			}
 			else
 			{
 				entries.AddRange(JsonSerializer.Deserialize<List<Entry>>(File.ReadAllText(dataFile)) ?? new List<Entry>());
@@ -545,7 +564,7 @@ internal sealed class MainForm : Form
 				}
 			}
 		}
-		catch (Exception ex) { MessageBox.Show(this, "No se pudieron cargar los accesos: " + ex.Message, "AccessShot 2.15", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+		catch (Exception ex) { MessageBox.Show(this, "No se pudieron cargar los accesos: " + ex.Message, "AccessShot 2.16", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
 		AccessShotVisuals.Load(this);
 		lastSavedConfiguration = File.Exists(dataFile) ? SerializeConfiguration() : null;
 		lastDiskSnapshot = File.Exists(dataFile) ? File.ReadAllText(dataFile) : null;
@@ -553,7 +572,7 @@ internal sealed class MainForm : Form
 
 	private static IEnumerable<Entry> CreateStarterEntries()
 	{
-		// Public, generic examples. Existing layouts are never replaced.
+		// Fallback examples if the packaged initial layout is unavailable.
 		yield return new Entry { Kind = EntryKind.Label, Title = "MIS ACCESOS", X = 24, Y = 24, Width = 180, Height = 56, FontSize = 18 };
 		yield return new Entry { Kind = EntryKind.Url, Title = "AccesShot en GitHub", Target = "https://github.com/SenecaDPJ/AccesShot", X = 24, Y = 106, Width = 190, Height = 56, FontSize = 14 };
 		yield return new Entry { Kind = EntryKind.Label, Title = "ETIQUETA DE EJEMPLO", X = 1172, Y = 92, Width = 90, Height = 50, FontSize = 11 };
@@ -588,7 +607,7 @@ internal sealed class MainForm : Form
 			lastSavedConfiguration = payload; lastDiskSnapshot = File.ReadAllText(dataFile);
 			return true;
 		}
-		catch (Exception ex) { MessageBox.Show(this, "No se pudieron guardar los accesos: " + ex.Message, "AccessShot 2.15", MessageBoxButtons.OK, MessageBoxIcon.Error); return false; }
+		catch (Exception ex) { MessageBox.Show(this, "No se pudieron guardar los accesos: " + ex.Message, "AccessShot 2.16", MessageBoxButtons.OK, MessageBoxIcon.Error); return false; }
 	}
 
 	private string SerializeConfiguration() => StylePolicy.Serialize(this);
@@ -622,11 +641,11 @@ internal sealed class MainForm : Form
 	{
 		try
 		{
-			if (!UndoAvailable()) { MessageBox.Show(this, "La recuperación ya no coincide con la configuración actual.", "AccessShot 2.15", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+			if (!UndoAvailable()) { MessageBox.Show(this, "La recuperación ya no coincide con la configuración actual.", "AccessShot 2.16", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 			UndoRecord record = JsonSerializer.Deserialize<UndoRecord>(File.ReadAllText(undoFile))!;
 			WriteAtomically(dataFile, record.Payload); File.Delete(undoFile); LoadEntries(); Render();
 		}
-		catch (Exception ex) { MessageBox.Show(this, "No se pudo recuperar la última acción: " + ex.Message, "AccessShot 2.15", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+		catch (Exception ex) { MessageBox.Show(this, "No se pudo recuperar la última acción: " + ex.Message, "AccessShot 2.16", MessageBoxButtons.OK, MessageBoxIcon.Error); }
 	}
 
 	private void EditEntry(EntryKind kind, Entry? existing = null)
@@ -973,12 +992,21 @@ internal sealed class MainForm : Form
 		return entries.Count(item => { Size size = DisplaySize(item); return item.X < 0 || item.Y < 0 || item.X + size.Width > visibleWidth || item.Y + size.Height > visibleHeight; });
 	}
 
+	private void PositionOffscreenNotice()
+	{
+		if (offscreenNotice.IsDisposed) return;
+		int left = Math.Max(8, ClientSize.Width - offscreenNotice.Width - 18);
+		int top = Math.Max(8, toolbar.Bottom + 8);
+		offscreenNotice.Location = new Point(left, top);
+	}
+
 	private void UpdateOffscreenNotice()
 	{
 		if (offscreenNotice.IsDisposed || canvas.ClientSize.Width <= 0 || canvas.ClientSize.Height <= 0)
 		{
 			return;
 		}
+		PositionOffscreenNotice();
 		List<Entry> list = entries.Where(item => { Size size = DisplaySize(item); return item.X < 0 || item.Y < 0 || item.X + size.Width > canvas.ClientSize.Width || item.Y + size.Height > canvas.ClientSize.Height; }).ToList();
 		int count = list.Count;
 		if (count == 0)
@@ -1134,7 +1162,7 @@ internal sealed class MainForm : Form
 	private void DeleteSelected()
 	{
 		List<Entry> targets = selectedEntries.Count > 0 ? selectedEntries.Where(entries.Contains).ToList() : (selected == null ? new List<Entry>() : new List<Entry> { selected });
-		if (targets.Count == 0) { MessageBox.Show(this, "Selecciona primero uno o varios objetos.", "AccessShot 2.15", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
+		if (targets.Count == 0) { MessageBox.Show(this, "Selecciona primero uno o varios objetos.", "AccessShot 2.16", MessageBoxButtons.OK, MessageBoxIcon.Information); return; }
 		DeleteEntries(targets);
 	}
 
@@ -1153,7 +1181,7 @@ internal sealed class MainForm : Form
 		catch (Exception ex)
 		{
 			foreach (var pair in removed.OrderBy(pair => pair.Index)) entries.Insert(Math.Min(pair.Index, entries.Count), pair.Item);
-			MessageBox.Show(this, "No se eliminó nada porque no se pudo preparar la recuperación: " + ex.Message, "AccessShot 2.15", MessageBoxButtons.OK, MessageBoxIcon.Error);
+			MessageBox.Show(this, "No se eliminó nada porque no se pudo preparar la recuperación: " + ex.Message, "AccessShot 2.16", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			return;
 		}
 		foreach (Entry item in targets) selectedEntries.Remove(item);
