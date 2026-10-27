@@ -1,0 +1,78 @@
+[
+  {
+    "Id": "aef45de68efc4357a53895ccf314655f",
+    "Kind": 2,
+    "Title": "MIS ACCESOS",
+    "Target": "",
+    "X": 24,
+    "Y": 24,
+    "Width": 180,
+    "Height": 56,
+    "FontSize": 18,
+    "Orientation": 0,
+    "Background": -13812654,
+    "Foreground": -1,
+    "__AccessShotStyle": {
+      "Version": 1,
+      "ThemeColors": true,
+      "HoverBackground": null
+    }
+  },
+  {
+    "Id": "defa01b27b2448f39953031305b678c7",
+    "Kind": 1,
+    "Title": "AccesShot en GitHub",
+    "Target": "https://github.com/SenecaDPJ/AccesShot",
+    "X": 24,
+    "Y": 106,
+    "Width": 190,
+    "Height": 56,
+    "FontSize": 14,
+    "Orientation": 0,
+    "Background": -13812654,
+    "Foreground": -1,
+    "__AccessShotStyle": {
+      "Version": 1,
+      "ThemeColors": true,
+      "HoverBackground": null
+    }
+  },
+  {
+    "Id": "f53634c442eb43848b48c98a239c1c9a",
+    "Kind": 2,
+    "Title": "ETIQUETA DE EJEMPLO",
+    "Target": "",
+    "X": 1172,
+    "Y": 92,
+    "Width": 90,
+    "Height": 50,
+    "FontSize": 11,
+    "Orientation": 0,
+    "Background": -13812654,
+    "Foreground": -1,
+    "__AccessShotStyle": {
+      "Version": 1,
+      "ThemeColors": true,
+      "HoverBackground": null
+    }
+  },
+  {
+    "Id": "76740506ff2a46a79855b976ad6d27b5",
+    "Kind": 1,
+    "Title": "URL DE EJEMPLO",
+    "Target": "https://example.com",
+    "X": 1200,
+    "Y": 23,
+    "Width": 90,
+    "Height": 50,
+    "FontSize": 11,
+    "Orientation": 0,
+    "Background": -13812654,
+    "Foreground": -1,
+    "__AccessShotStyle": {
+      "Version": 1,
+      "ThemeColors": true,
+      "HoverBackground": null
+    }
+  }
+]
