@@ -1,0 +1,1 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><TargetFramework>net8.0-windows</TargetFramework><UseWindowsForms>true</UseWindowsForms><EnableWindowsTargeting>true</EnableWindowsTargeting><Nullable>enable</Nullable><LangVersion>12.0</LangVersion><AssemblyName>AccessShotStyles</AssemblyName><GenerateAssemblyInfo>false</GenerateAssemblyInfo></PropertyGroup></Project>

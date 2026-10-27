@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <AssemblyName>AccessShot</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>work212/Aplicacion/System.Diagnostics.Process.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>work212/Aplicacion/System.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread">
+      <HintPath>work212/Aplicacion/System.Threading.Thread.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

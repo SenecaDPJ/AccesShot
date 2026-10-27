@@ -1,0 +1,30 @@
+{
+  "name": "AccesShot",
+  "owner": "SenecaDPJ",
+  "repository": "SenecaDPJ/AccesShot",
+  "visibility": "private",
+  "default_branch": "main",
+  "version": "2.12",
+  "tag": "v2.12",
+  "release_title": "AccesShot 2.12 — Windows 11 x64",
+  "author": "David De Prado",
+  "signature": "© David De Prado · 2026",
+  "copyright": "Copyright (c) 2026 David De Prado (Seneca DPJ)",
+  "license": "MIT",
+  "description": "Lanzador portátil para Windows 11: organiza aplicaciones clásicas y modernas, enlaces y etiquetas en un lienzo con temas, colores y capas.",
+  "topics": [
+    "windows-11",
+    "launcher",
+    "winforms",
+    "csharp",
+    "portable",
+    "appsfolder",
+    "shortcuts"
+  ],
+  "release_asset": "AccessShot-2.12-apps-Windows-portable-Windows-x64.zip",
+  "sha256": "c8f8658f8ed9c4f3a2ef8eec69fea86eab0f354b9ca4b0c82f1ca87bb4c1f6c6",
+  "size_bytes": 70554924,
+  "author_verified": true,
+  "repository_created": false,
+  "full_core_source_build_verified": false
+}

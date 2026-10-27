@@ -1,0 +1,47 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <AssemblyName>AccessShot</AssemblyName>
+    <GenerateAssemblyInfo>False</GenerateAssemblyInfo>
+    <OutputType>WinExe</OutputType>
+    <UseWindowsForms>True</UseWindowsForms>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <PropertyGroup>
+    <LangVersion>12.0</LangVersion>
+    <AllowUnsafeBlocks>True</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup />
+  <ItemGroup />
+  <ItemGroup>
+    <Reference Include="System.Drawing.Primitives">
+      <HintPath>work212/Aplicacion/System.Drawing.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections">
+      <HintPath>work212/Aplicacion/System.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing.Common">
+      <HintPath>work212/Aplicacion/System.Drawing.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms.Primitives">
+      <HintPath>work212/Aplicacion/System.Windows.Forms.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Diagnostics.Process">
+      <HintPath>work212/Aplicacion/System.Diagnostics.Process.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json">
+      <HintPath>work212/Aplicacion/System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Linq">
+      <HintPath>work212/Aplicacion/System.Linq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading">
+      <HintPath>work212/Aplicacion/System.Threading.dll</HintPath>
+    </Reference>
+    <Reference Include="AccessShotStyles">
+      <HintPath>work212/Aplicacion/AccessShotStyles.dll</HintPath>
+    </Reference>
+    <Reference Include="AccessShotWindowsApps">
+      <HintPath>work212/Aplicacion/AccessShotWindowsApps.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>
