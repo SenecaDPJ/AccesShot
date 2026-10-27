@@ -1,9 +1,12 @@
+using System;
 using System.Drawing;
 
 namespace AccessShot;
 
 internal sealed class Entry
 {
+	public string Id { get; set; } = Guid.NewGuid().ToString("N");
+
 	public EntryKind Kind { get; set; }
 
 	public string Title { get; set; } = "";
@@ -19,6 +22,8 @@ internal sealed class Entry
 	public int Height { get; set; } = 78;
 
 	public int FontSize { get; set; } = 20;
+
+	public int Orientation { get; set; }
 
 	public int Background { get; set; } = Color.FromArgb(45, 60, 82).ToArgb();
 

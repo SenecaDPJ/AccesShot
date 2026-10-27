@@ -23,11 +23,17 @@ internal sealed class EntryTile : Control
 
 	public ResizeEdge ResizeEdges { get; set; }
 
+	public Entry Item => item;
+
+	public bool SelectionOnlyClick { get; set; }
+
 	public EntryTile(Entry entry, bool isDark)
 	{
 		item = entry;
 		dark = isDark;
-		base.Size = new Size(Math.Max(90, entry.Width), Math.Max(50, entry.Height));
+		base.Size = (entry.Orientation % 180 == 0)
+			? new Size(Math.Max(90, entry.Width), Math.Max(50, entry.Height))
+			: new Size(Math.Max(50, entry.Height), Math.Max(90, entry.Width));
 		Cursor = Cursors.Hand;
 		SetStyle(ControlStyles.UserPaint | ControlStyles.ResizeRedraw | ControlStyles.AllPaintingInWmPaint | ControlStyles.OptimizedDoubleBuffer, value: true);
 	}
