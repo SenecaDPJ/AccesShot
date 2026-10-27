@@ -4,9 +4,17 @@
 
 ![AccesShot](assets/social-preview.png)
 
-**Tus aplicaciones, tus enlaces y tus etiquetas, organizados en un lienzo a tu medida.**
+**Tu PC a un clic 🥷🏻**
+**Aplicaciones, enlaces y etiquetas, organizados en un lienzo a medida de tus pantallas.**
 
-AccesShot reúne tus programas, aplicaciones modernas de Windows y páginas web en una sola pantalla. Crea accesos, organízalos con etiquetas y capas, y personaliza su aspecto con colores y temas. Es portátil y funciona en Windows 11 x64.
+**AccesShot** reúne tus programas, aplicaciones modernas de Windows y páginas web en una sola pantalla. 
+Crea accesos, organízalos con etiquetas y capas, y personaliza su aspecto con colores y temas. 
+Es **portátil** y está diseñado para Windows 11 x64.
+
+ ·🖱️Ten a mano y como tú quieres todos tus accesos sin importar su origen. 
+ ·🗂️Organízate como quieras sin molestas limitaciones. 
+ ·🖥️Lienzo personalizable donde el límite está en tus monitores disponibles. 
+ ·🎨Tunea tus accesos con colores, efectos, tamaños y capas.
 
 **Windows 11 x64 · Portátil · v2.13 · MIT**
 
