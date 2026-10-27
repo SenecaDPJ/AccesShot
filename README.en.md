@@ -1,4 +1,4 @@
-# AccesShot 2.12
+# AccesShot 2.13
 
 [Español](README.md) · [English](README.en.md)
 
@@ -6,11 +6,11 @@
 
 **Your apps, links and labels, arranged on your own canvas.**
 
-Portable Windows 11 x64 launcher with classic and modern apps, URLs, labels, dark/light themes, custom colors, resizing and persistent layer order.
+AccesShot brings your programs, modern Windows apps, and web pages together on one screen. Create shortcuts, arrange them with labels and layers, and customize colors and themes. It is portable for Windows 11 x64.
 
 ## Quick start
 
-1. Download the [2.12 release](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.12); this private repository requires access.
+1. Download the [2.13 release](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.13); this private repository requires access.
 2. Extract the complete ZIP and open **AccessShot.exe**.
 3. Keep **Aplicacion** beside it. The required runtime is included.
 
@@ -22,11 +22,13 @@ Portable Windows 11 x64 launcher with classic and modern apps, URLs, labels, dar
 - Default colors follow the theme until background or text is customized. Hover colors are independently configurable.
 - Confirmation before opening URL shortcuts or the GitHub profile.
 
-Per-user data: `%APPDATA%\AccessShot\entries.json`. Keep personal paths and URLs out of Git.
+Per-user data: `%APPDATA%\AccessShot\entries.json`. Keep personal paths and URLs out of Git. New profiles receive a public sample layout, including one small label and URL outside the initial view; existing layouts are preserved.
 
 ## Release and source status
 
-Version 2.12 was tested and approved by the author. Its release ZIP is preserved byte-for-byte. Editable module and native launcher sources are included, alongside recovered core reference material. A complete rebuilt core is not yet validated; see [development notes](docs/DESARROLLO.md).
+The 2.13 core is rebuilt from adapted recovered sources in `src/Core` and tested for the new starter layout. The 2.12 release remains available unchanged. See [validation](docs/VALIDACION_2.13.md).
+
+Version 2.12 was tested and approved by the author. Its release ZIP is preserved byte-for-byte. Editable module and native launcher sources are included, alongside recovered core reference material. The 2.13 rebuilt core has been tested for startup and the starter layout; a complete regression review of every historical function is still pending. See [development notes](docs/DESARROLLO.md).
 
 Repository: **AccesShot**. Historical executable names remain **AccessShot** for compatibility.
 

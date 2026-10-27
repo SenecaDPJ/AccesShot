@@ -1,4 +1,4 @@
-# AccesShot 2.12
+# AccesShot 2.13
 
 [Español](README.md) · [English](README.en.md)
 
@@ -8,13 +8,13 @@
 
 AccesShot reúne tus programas, aplicaciones modernas de Windows y páginas web en una sola pantalla. Crea accesos, organízalos con etiquetas y capas, y personaliza su aspecto con colores y temas. Es portátil y funciona en Windows 11 x64.
 
-**Windows 11 x64 · Portátil · v2.12 · MIT**
+**Windows 11 x64 · Portátil · v2.13 · MIT**
 
 ## Descargar e iniciar
 
-[Descargar la versión 2.12](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.12)
+[Descargar la versión 2.13](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.13)
 
-La descarga está disponible en la versión 2.12. Necesitas acceso a este repositorio privado para verla.
+La descarga está disponible en la versión 2.13. Necesitas acceso a este repositorio privado para verla.
 
 1. Descarga el ZIP de aplicación y extrae todo su contenido.
 2. Abre **AccessShot.exe**, visible en la primera carpeta.
@@ -53,13 +53,15 @@ Para objetos anteriores a la 2.11, la condición inicial se deduce de los colore
 
 La disposición se guarda por usuario en `%APPDATA%\AccessShot\entries.json`. Puede contener rutas y URL personales: no lo incluyas en Git.
 
+En un perfil sin datos previos, la 2.13 muestra ejemplos públicos. Una etiqueta y una URL pequeñas quedan fuera de la vista inicial para mostrar el aviso. Si ya tienes objetos guardados, se conserva tu disposición.
+
 El buscador consulta el catálogo local de Windows. URL y GitHub piden confirmación antes de abrir el navegador; las aplicaciones iniciadas pueden tener sus propias conexiones a Internet.
 
 ## Estado del proyecto
 
-**La 2.12 ha sido probada y aprobada por el autor.** Se publica el ZIP original, sin alterar sus bytes: [validación](docs/VALIDACION.md).
+**La 2.13 incluye una disposición pública de ejemplo en perfiles nuevos.** Los datos de usuarios existentes no cambian. El núcleo se ha reconstruido y probado para este cambio: [validación 2.13](docs/VALIDACION_2.13.md). La 2.12 original sigue disponible en [su release](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.12).
 
-Se incluyen fuentes editables de los módulos, el lanzador nativo y material recuperado del núcleo para consulta. La reconstrucción integral del núcleo aún no está validada: [desarrollo](docs/DESARROLLO.md).
+Las fuentes editables del núcleo 2.13 están en `src/Core`; los módulos se mantienen en `src/Styles` y `src/WindowsApps`. El lanzador y el supervisor proceden de la 2.12 validada. [Desarrollo](docs/DESARROLLO.md).
 
 El repositorio se llama **AccesShot**. Los archivos internos mantienen **AccessShot** por compatibilidad con la versión aprobada.
 

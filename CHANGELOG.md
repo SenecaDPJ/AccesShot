@@ -1,5 +1,11 @@
 # Historial
 
+## 2.13 — 2026-10-27
+
+- Disposición pública de ejemplo en perfiles nuevos; etiqueta y URL fuera de la vista inicial reducidas a 90 × 50 para conservar el aviso sin agrandar innecesariamente el área desplazable.
+- Los datos y disposiciones de usuarios existentes permanecen intactos.
+- Núcleo reconstruido desde fuentes recuperadas y adaptadas, con .NET 8 y runtime portátil incluido.
+
 ## 2.12 — 2026-10-27
 
 Versión probada y aprobada por David De Prado. Primera publicación preparada para el nuevo repo privado AccesShot.
