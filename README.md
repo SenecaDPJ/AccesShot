@@ -14,7 +14,7 @@ AccesShot reúne tus programas, aplicaciones modernas de Windows y páginas web 
 
 [Descargar la versión 2.12](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.12)
 
-El enlace estará disponible tras crear la release en este repositorio privado; requiere acceso al repositorio.
+La descarga está disponible en la versión 2.12. Necesitas acceso a este repositorio privado para verla.
 
 1. Descarga el ZIP de aplicación y extrae todo su contenido.
 2. Abre **AccessShot.exe**, visible en la primera carpeta.
