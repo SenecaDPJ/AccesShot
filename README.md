@@ -49,6 +49,9 @@ La descarga está disponible en la versión 2.16. Necesitas acceso a este reposi
 
 En **CREAR → APLICACIÓN → Buscar apps de Windows…** puedes buscar aplicaciones instaladas para tu usuario, incluidas Fotos, Recortes, Enlace móvil y WhatsApp. El selector clásico de archivos sigue disponible.
 
+<img width="1104" height="752" alt="Captura de pantalla 2026-10-27 193844" src="https://github.com/user-attachments/assets/74a6140a-43a4-4462-af16-069ed3977710" />
+
+
 ## Datos
 
 La configuración se guarda por usuario en `%APPDATA%\AccessShot\entries.json`. En un perfil nuevo, AccesShot crea ese archivo con la disposición inicial de `assets/initial-layout.json`; si el archivo ya existe, conserva los accesos guardados. La última operación deshacible y las preferencias de copia se guardan en archivos auxiliares de esa carpeta. Al migrar por primera vez, AccesShot conserva una copia `.pre-2.15.bak`. La disposición inicial del autor se incluye en este repositorio privado a petición suya. Las copias JSON personales pueden incluir rutas y URL; guárdalas en una carpeta privada y no las subas a Git.
