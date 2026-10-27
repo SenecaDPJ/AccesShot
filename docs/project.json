@@ -4,9 +4,9 @@
   "repository": "SenecaDPJ/AccesShot",
   "visibility": "private",
   "default_branch": "main",
-  "version": "2.15",
-  "tag": "v2.15",
-  "release_title": "AccesShot 2.15 — Windows 11 x64",
+  "version": "2.16",
+  "tag": "v2.16",
+  "release_title": "AccesShot 2.16 — Windows 11 x64",
   "author": "David De Prado",
   "signature": "© David De Prado · 2026",
   "copyright": "Copyright (c) 2026 David De Prado (Seneca DPJ)",
@@ -20,9 +20,9 @@
     "appsfolder",
     "shortcuts"
   ],
-  "release_asset": "AccessShot-2.15-portable-Windows-x64.zip",
-  "sha256": "517dcdfdab0a1a960c0b1b9c83c1d57f216e1f4aa1955bdb422ba8e1ecf1b4ed",
-  "size_bytes": 72526745,
+  "release_asset": "AccessShot-2.16-portable-Windows-x64.zip",
+  "sha256": "b54f2bab06ed18d005d13bf4042e931624015e9d6cbb284907166293997d54a3",
+  "size_bytes": 72902014,
   "previous_release_preserved": true,
-  "release_status": "published_latest"
+  "release_status": "local_candidate_built_not_published"
 }

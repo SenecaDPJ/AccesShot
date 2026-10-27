@@ -47,3 +47,11 @@ Corrige el nombre reflejado del campo que enlaza WindowsAppsPicker con el contex
 La 2.15 incorpora orientación, selección rectangular y movimiento de grupos, recuperación de la última edición, copias JSON y el panel de opciones. `src/Core/AssemblyInfo.cs` y la interfaz identifican la versión como 2.15. La serialización de objetos y estilos se genera como un único JSON antes de sustituir el archivo. El informe de comprobaciones y los puntos todavía pendientes están en [VALIDACION_2.15.md](VALIDACION_2.15.md).
 
 Para empaquetar usa `scripts/Build-2.15.ps1` con el ZIP portable 2.14 cuyo SHA-256 está fijado en el script. El script compila los módulos y el núcleo, publica para `win-x64`, conserva los lanzadores de la base y genera el ZIP con su suma. La integración con `main` y la creación del tag/release se realizan después del paquete; el procedimiento está en [ENTREGA_2.15.md](ENTREGA_2.15.md).
+
+## Reconstrucción 2.16
+
+La 2.16 corrige la posición del aviso de desbordamiento y restablece el icono del formulario y la aplicación. `scripts/Build-2.16.ps1` exige el ZIP portable 2.15 con SHA-256 fijado, compila módulos y núcleo, publica para `win-x64` y crea el ZIP con su suma. El resultado local y sus límites de validación están en `VALIDACION_2.16.md`; el procedimiento de integración y publicación está en `ENTREGA_2.16.md`. La app no se ha iniciado para validación visual y el candidato no está publicado.
+
+## Disposición inicial 2.16
+
+`assets/initial-layout.json` contiene la disposición facilitada por el autor. Solo se copia a `%APPDATA%\AccessShot\entries.json` cuando no existe configuración previa; los perfiles existentes no se modifican. El paquete la incluye en `Aplicacion/assets/initial-layout.json` para crear el primer perfil.
