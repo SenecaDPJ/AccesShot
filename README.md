@@ -6,7 +6,7 @@
 
 **Tus aplicaciones, tus enlaces y tus etiquetas, organizados en un lienzo a tu medida.**
 
-Lanzador portátil para Windows 11 x64. Crea accesos a aplicaciones clásicas y modernas, añade URL y organiza el espacio con etiquetas, colores y capas.
+AccesShot reúne tus programas, aplicaciones modernas de Windows y páginas web en una sola pantalla. Crea accesos, organízalos con etiquetas y capas, y personaliza su aspecto con colores y temas. Es portátil y funciona en Windows 11 x64.
 
 **Windows 11 x64 · Portátil · v2.12 · MIT**
 
