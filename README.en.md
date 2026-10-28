@@ -19,9 +19,10 @@ AccesShot brings your programs, modern Windows apps and web pages together on on
 
 ## Download and start
 
-[Download the 2.16 release](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.16)
+[Download AccesShot 2.16 (portable ZIP for Windows x64)](https://github.com/SenecaDPJ/AccesShot/releases/download/v2.16/AccessShot-2.16-portable-Windows-x64.zip)
+[View the 2.16 release and its notes](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.16)
 
-This private repository requires access to download the release.
+The repository and release are public, so you can download the ZIP without signing in to GitHub.
 
 1. Download and extract the complete application ZIP.
 2. Open **AccessShot.exe** in the top-level folder.
@@ -51,7 +52,7 @@ Choose **CREATE → APPLICATION → Find Windows apps…** to search apps instal
 
 ## Data
 
-Per-user configuration is stored in `%APPDATA%\AccessShot\entries.json`. On a new profile, AccesShot creates it from `assets/initial-layout.json`; existing configurations are preserved. The last undoable action and backup preferences are stored in companion files. On first migration, AccesShot keeps a `.pre-2.15.bak` copy. Personal backups can contain app paths and URLs, so keep them private and out of Git. The author-provided starter layout is included in this private repository.
+Per-user configuration is stored in `%APPDATA%\AccessShot\entries.json`. On a new profile, AccesShot creates it from `assets/initial-layout.json`; existing configurations are preserved. The last undoable action and backup preferences are stored in companion files. On first migration, AccesShot keeps a `.pre-2.15.bak` copy. Personal backups can contain app paths and URLs, so keep them private and out of Git. The repository includes the author-provided starter layout.
 
 A backup contains shortcuts and their layout, not the programs or files they point to. Paths may need changes on another PC.
 
