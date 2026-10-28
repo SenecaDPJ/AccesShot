@@ -19,9 +19,10 @@ AccesShot reúne tus programas, aplicaciones modernas de Windows y páginas web 
 
 ## Descargar e iniciar
 
-[Descargar la versión 2.16](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.16)
+[Descargar AccesShot 2.16 (ZIP portátil para Windows x64)](https://github.com/SenecaDPJ/AccesShot/releases/download/v2.16/AccessShot-2.16-portable-Windows-x64.zip)
+[Ver la release 2.16 y sus notas](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.16)
 
-La descarga está disponible en la versión 2.16. Necesitas acceso a este repositorio privado para verla.
+El repositorio y la release son públicos; no hace falta iniciar sesión en GitHub para descargar el ZIP.
 
 1. Descarga el ZIP de aplicación y extrae todo su contenido.
 2. Abre **AccessShot.exe**, visible en la primera carpeta.
@@ -54,7 +55,7 @@ En **CREAR → APLICACIÓN → Buscar apps de Windows…** puedes buscar aplicac
 
 ## Datos
 
-La configuración se guarda por usuario en `%APPDATA%\AccessShot\entries.json`. En un perfil nuevo, AccesShot crea ese archivo con la disposición inicial de `assets/initial-layout.json`; si el archivo ya existe, conserva los accesos guardados. La última operación deshacible y las preferencias de copia se guardan en archivos auxiliares de esa carpeta. Al migrar por primera vez, AccesShot conserva una copia `.pre-2.15.bak`. La disposición inicial del autor se incluye en este repositorio privado a petición suya. Las copias JSON personales pueden incluir rutas y URL; guárdalas en una carpeta privada y no las subas a Git.
+La configuración se guarda por usuario en `%APPDATA%\AccessShot\entries.json`. En un perfil nuevo, AccesShot crea ese archivo con la disposición inicial de `assets/initial-layout.json`; si el archivo ya existe, conserva los accesos guardados. La última operación deshacible y las preferencias de copia se guardan en archivos auxiliares de esa carpeta. Al migrar por primera vez, AccesShot conserva una copia `.pre-2.15.bak`. La disposición inicial del autor se incluye en el repositorio a petición suya. Las copias JSON personales pueden incluir rutas y URL; guárdalas en una carpeta privada y no las subas a Git.
 
 Una copia contiene los accesos y su disposición, no los programas ni los archivos a los que apuntan. En otro PC algunas rutas quizá necesiten ajustes.
 
