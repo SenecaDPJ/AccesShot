@@ -55,3 +55,8 @@ La 2.16 corrige la posición del aviso de desbordamiento y restablece el icono d
 ## Disposición inicial 2.16
 
 `assets/initial-layout.json` contiene la disposición facilitada por el autor. Solo se copia a `%APPDATA%\AccessShot\entries.json` cuando no existe configuración previa; los perfiles existentes no se modifican. El paquete la incluye en `Aplicacion/assets/initial-layout.json` para crear el primer perfil.
+## Reconstrucción 3.0 — código en `main`, release pendiente
+
+`src/Core/UiText.cs` contiene el catálogo español/inglés y `src/Core/LanguageTile.cs` dibuja el selector estrecho con el rótulo vertical y la bandera. La preferencia se guarda aparte en `%APPDATA%\AccessShot\language.json`; la ausencia de esa preferencia abre la app en español. Los nombres y destinos personales no se traducen. Los ejemplos originales se muestran en el idioma activo según su identificador estable.
+
+Los módulos `Styles` y `WindowsApps` reciben el traductor del formulario para localizar sus menús y el selector de apps. `scripts/Build-3.0.ps1` compila las fuentes y prepara un ZIP sobre la base portátil verificada 2.16. La comprobación visual de la interfaz y la validación del paquete todavía están pendientes; aún no hay paquete portable ni release 3.0.

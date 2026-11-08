@@ -11,6 +11,8 @@ internal sealed class EntryTile : Control
 
 	private readonly bool dark;
 
+	private readonly string displayTitle;
+
 	public bool Selected { get; set; }
 
 	public bool Dragging { get; set; }
@@ -27,10 +29,12 @@ internal sealed class EntryTile : Control
 
 	public bool SelectionOnlyClick { get; set; }
 
-	public EntryTile(Entry entry, bool isDark)
+	public EntryTile(Entry entry, bool isDark, string? localizedTitle = null)
 	{
 		item = entry;
 		dark = isDark;
+		displayTitle = localizedTitle ?? entry.Title;
+		AccessibleName = displayTitle;
 		base.Size = (entry.Orientation % 180 == 0)
 			? new Size(Math.Max(90, entry.Width), Math.Max(50, entry.Height))
 			: new Size(Math.Max(50, entry.Height), Math.Max(90, entry.Width));
@@ -41,7 +45,7 @@ internal sealed class EntryTile : Control
 	protected override void OnPaint(PaintEventArgs e)
 	{
 		base.OnPaint(e);
-		AccessShotVisuals.Paint(this, e, item, dark, Selected);
+		AccessShotVisuals.Paint(this, e, item, dark, Selected, displayTitle);
 	}
 
 	protected override void OnMouseEnter(EventArgs e)

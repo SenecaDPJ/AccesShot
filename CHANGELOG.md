@@ -1,5 +1,13 @@
 # AccesShot — Cambios
 
+## 3.0 — en preparación
+- Selector de idioma español/inglés en la barra superior, entre MODOS y OPCIONES; la bandera indica el idioma activo.
+- Español es el idioma predeterminado. La elección manual se guarda en `%APPDATA%\AccessShot\language.json`.
+- Traducción al inglés de la interfaz, cuadros de diálogo, menús, confirmaciones y buscador de aplicaciones de Windows.
+- Los ejemplos incluidos se muestran en el idioma elegido; los nombres y destinos personalizados se conservan.
+- Añade `scripts/Build-3.0.ps1` para preparar el paquete portátil sobre la base verificada 2.16.
+- El código se integra en `main`; el paquete y la release 3.0 siguen pendientes.
+
 ## 2.16 — 2026-10-27
 - Reubica el aviso de objetos fuera de la vista en la zona superior del lienzo, sin cubrir la firma.
 - Restaura el icono de AccesShot en la ventana y la barra de tareas.

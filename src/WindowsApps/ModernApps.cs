@@ -11,7 +11,7 @@ using System.Runtime.InteropServices;
 using System.Threading;
 using System.Drawing;
 using System.Windows.Forms;
-[assembly:AssemblyVersion("2.12.0.0")]
+[assembly:AssemblyVersion("3.0.0.0")]
 public sealed record WindowsApp(string Name,string Id) {
  public bool Modern=>Id.Contains('!');
  public string SearchText {
@@ -82,14 +82,15 @@ public static class WindowsAppsPicker {
   if(field==null)throw new MissingFieldException(o.GetType().FullName,n);
   return field.GetValue(o)!;
  }
- public static void Attach(object editContext) {
+ public static void Attach(object editContext,Func<string,string>? translate=null) {
+  Func<string,string> t=translate??(value=>value);
   if(Convert.ToInt32(Field(editContext,"kind"))!=0)return;
   Form dialog=(Form)Field(editContext,"dialog");TextBox title=(TextBox)Field(editContext,"title"),target=(TextBox)Field(editContext,"target");
   object form=Field(editContext,"<>4__this");bool dark=(bool)Field(form,"dark");
-  var button=new Button {Text="Buscar apps de Windows…",Left=105,Top=93,Width=380,Height=29,FlatStyle=FlatStyle.Flat,BackColor=Color.FromArgb(255,240,232),ForeColor=Color.FromArgb(145,55,9)};
+  var button=new Button {Text=t("Buscar apps de Windows…"),Left=105,Top=93,Width=380,Height=29,FlatStyle=FlatStyle.Flat,BackColor=Color.FromArgb(255,240,232),ForeColor=Color.FromArgb(145,55,9)};
   button.FlatAppearance.BorderColor=Color.FromArgb(215,101,50);
   button.Click+=(_,_)=>{
-   using var picker=new Picker(dark);
+   using var picker=new Picker(dark,t);
    if(picker.ShowDialog(dialog)!=DialogResult.OK||picker.SelectedApp==null)return;
    target.Text=AppTargets.Prefix+picker.SelectedApp.Id;
    if(string.IsNullOrWhiteSpace(title.Text))title.Text=picker.SelectedApp.Name;
@@ -97,31 +98,37 @@ public static class WindowsAppsPicker {
   dialog.Controls.Add(button);
  }
  sealed class Picker:Form {
+  readonly Func<string,string> t;
   readonly TextBox search=new(){Dock=DockStyle.Fill};
-  readonly CheckBox modern=new(){Text="Solo apps modernas",AutoSize=true,Checked=true};
+  readonly CheckBox modern;
   readonly ListView list=new(){Dock=DockStyle.Fill,View=View.Details,FullRowSelect=true,MultiSelect=false,HideSelection=false};
-  readonly Label status=new(){AutoSize=true,Text="Consultando aplicaciones instaladas…"};
-  readonly Button accept=new(){Text="Seleccionar",Width=120,Enabled=false};
-  readonly Button refresh=new(){Text="Actualizar",Width=100};
+  readonly Label status;
+  readonly Button accept;
+  readonly Button refresh;
   List<WindowsApp> apps=new();
   public WindowsApp? SelectedApp {get;private set;}
-  public Picker(bool dark) {
-   Text="Buscar apps de Windows · AccessShot 2.14";Width=800;Height=590;MinimumSize=new Size(660,430);StartPosition=FormStartPosition.CenterParent;Font=new Font("Segoe UI",10);
+  public Picker(bool dark,Func<string,string> translate) {
+   t=translate;
+   modern=new(){Text=t("Solo apps modernas"),AutoSize=true,Checked=true};
+   status=new(){AutoSize=true,Text=t("Consultando aplicaciones instaladas…")};
+   accept=new(){Text=t("Seleccionar"),Width=120,Enabled=false};
+   refresh=new(){Text=t("Actualizar"),Width=100};
+   Text=t("Buscar apps de Windows · AccesShot 3.0");Width=800;Height=590;MinimumSize=new Size(660,430);StartPosition=FormStartPosition.CenterParent;Font=new Font("Segoe UI",10);
    Color bg=dark?Color.FromArgb(20,23,30):Color.FromArgb(235,240,245),fg=dark?Color.FromArgb(237,242,252):Color.FromArgb(28,45,67),surface=dark?Color.FromArgb(32,38,49):Color.White;
    BackColor=bg;ForeColor=fg;search.BackColor=surface;search.ForeColor=fg;list.BackColor=surface;list.ForeColor=fg;
    var layout=new TableLayoutPanel{Dock=DockStyle.Fill,Padding=new Padding(16),ColumnCount=1,RowCount=7};
    layout.RowStyles.Add(new RowStyle(SizeType.Absolute,30));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,40));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,42));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,32));layout.RowStyles.Add(new RowStyle(SizeType.Percent,100));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,34));layout.RowStyles.Add(new RowStyle(SizeType.Absolute,42));
-   layout.Controls.Add(new Label{Text="Busca aplicaciones instaladas en este equipo",AutoSize=true,Font=new Font(Font,FontStyle.Bold)},0,0);
+   layout.Controls.Add(new Label{Text=t("Busca aplicaciones instaladas en este equipo"),AutoSize=true,Font=new Font(Font,FontStyle.Bold)},0,0);
    var top=new TableLayoutPanel{Dock=DockStyle.Fill,ColumnCount=2};top.ColumnStyles.Add(new ColumnStyle(SizeType.Percent,100));top.ColumnStyles.Add(new ColumnStyle(SizeType.Absolute,108));top.Controls.Add(search,0,0);top.Controls.Add(refresh,1,0);layout.Controls.Add(top,0,1);
    var quick=new FlowLayoutPanel{Dock=DockStyle.Fill,WrapContents=false};
-   foreach(string name in new[]{"Todas","Fotos","Recortes","Enlace móvil","WhatsApp"}) {
-    var b=new Button{Text=name,AutoSize=true,Height=31};
-    b.Click+=(_,_)=>{if(name=="WhatsApp")modern.Checked=false;search.Text=name=="Todas"?"":name;};quick.Controls.Add(b);
+   foreach(var filter in new[]{(Name:"Todas",Search:""),(Name:"Fotos",Search:"Photos"),(Name:"Recortes",Search:"Snipping Tool"),(Name:"Enlace móvil",Search:"Phone Link"),(Name:"WhatsApp",Search:"WhatsApp")}) {
+    var b=new Button{Text=t(filter.Name),AutoSize=true,Height=31};
+    b.Click+=(_,_)=>{if(filter.Name=="WhatsApp")modern.Checked=false;search.Text=filter.Search;};quick.Controls.Add(b);
    }
    layout.Controls.Add(quick,0,2);layout.Controls.Add(modern,0,3);
-   list.Columns.Add("Aplicación",490);list.Columns.Add("Tipo",180);layout.Controls.Add(list,0,4);layout.Controls.Add(status,0,5);
+   list.Columns.Add(t("Aplicación"),490);list.Columns.Add(t("Tipo"),180);layout.Controls.Add(list,0,4);layout.Controls.Add(status,0,5);
    var bottom=new FlowLayoutPanel{Dock=DockStyle.Fill,FlowDirection=FlowDirection.RightToLeft};
-   var cancel=new Button{Text="Cancelar",Width=110,DialogResult=DialogResult.Cancel};bottom.Controls.Add(cancel);bottom.Controls.Add(accept);layout.Controls.Add(bottom,0,6);Controls.Add(layout);CancelButton=cancel;AcceptButton=accept;
+   var cancel=new Button{Text=t("Cancelar"),Width=110,DialogResult=DialogResult.Cancel};bottom.Controls.Add(cancel);bottom.Controls.Add(accept);layout.Controls.Add(bottom,0,6);Controls.Add(layout);CancelButton=cancel;AcceptButton=accept;
    search.TextChanged+=(_,_)=>Filter();modern.CheckedChanged+=(_,_)=>Filter();refresh.Click+=(_,_)=>LoadApps(true);
    list.SelectedIndexChanged+=(_,_)=>accept.Enabled=list.SelectedItems.Count==1;
    accept.Click+=(_,_)=>Choose();list.DoubleClick+=(_,_)=>Choose();Shown+=(_,_)=>{search.Focus();LoadApps(false);};
@@ -130,22 +137,22 @@ public static class WindowsAppsPicker {
   void Filter() {
    if(refresh.Enabled==false)return;list.BeginUpdate();list.Items.Clear();
    foreach(var a in apps.Where(a=>(!modern.Checked||a.Modern)&&a.Matches(search.Text))) {
-    var row=new ListViewItem(a.Name){Tag=a};row.SubItems.Add(a.Modern?"App moderna":"Aplicación clásica");list.Items.Add(row);
+    var row=new ListViewItem(a.Name){Tag=a};row.SubItems.Add(t(a.Modern?"App moderna":"Aplicación clásica"));list.Items.Add(row);
    }
-   list.EndUpdate();accept.Enabled=false;status.Text=$"{list.Items.Count} aplicaciones · Solo se muestran las instaladas para este usuario.";
+   list.EndUpdate();accept.Enabled=false;status.Text=string.Format(t("{0} aplicaciones · Solo se muestran las instaladas para este usuario."),list.Items.Count);
   }
   void Post(Action action) {
    try {if(!IsDisposed&&IsHandleCreated)BeginInvoke((Action)(()=>{if(!IsDisposed)action();}));}
    catch(InvalidOperationException){}
   }
   void LoadApps(bool force) {
-   refresh.Enabled=false;accept.Enabled=false;status.Text="Consultando aplicaciones instaladas…";
+   refresh.Enabled=false;accept.Enabled=false;status.Text=t("Consultando aplicaciones instaladas…");
    var thread=new Thread(()=>{
     try {
      var found=WindowsAppCatalog.Get(force);
      Post(()=>{apps=found;refresh.Enabled=true;Filter();});
     }catch(Exception ex) {
-     Post(()=>{refresh.Enabled=true;status.Text="No se pudo consultar Windows: "+ex.Message;});
+     Post(()=>{refresh.Enabled=true;status.Text=string.Format(t("No se pudo consultar Windows: {0}"),t(ex.Message));});
     }
    });thread.IsBackground=true;thread.SetApartmentState(ApartmentState.STA);thread.Start();
   }

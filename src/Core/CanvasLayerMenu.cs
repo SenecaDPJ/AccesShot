@@ -15,7 +15,7 @@ internal static class CanvasLayerMenu
 
 	public static void AddChoice(ContextMenuStrip P_0, MainForm P_1, Entry P_2, Control P_3, string P_4, int P_5)
 	{
-		ToolStripItem toolStripItem = P_0.Items.Add(P_4, null, LayerClicked);
+		ToolStripItem toolStripItem = P_0.Items.Add(P_1.TranslateUi(P_4), null, LayerClicked);
 		toolStripItem.Tag = new object[4] { P_1, P_2, P_3, P_5 };
 	}
 

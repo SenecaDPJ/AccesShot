@@ -5,15 +5,26 @@ namespace AccessShot;
 
 internal sealed class ActionGroup : Panel
 {
+	private readonly Label captionLabel;
+
 	public FlowLayoutPanel Buttons { get; }
+
+	public string SpanishCaption { get; }
+
+	public string Caption
+	{
+		get => captionLabel.Text;
+		set => captionLabel.Text = value;
+	}
 
 	public ActionGroup(string title, int buttonCount)
 	{
 		int width = buttonCount * 126;
 		base.Size = new Size(width, 140);
-		base.Margin = new Padding(0, 0, 26, 0);
+		base.Margin = new Padding(0, 0, 12, 0);
 		BackColor = Color.Black;
-		Label value = new Label
+		SpanishCaption = title;
+		captionLabel = new Label
 		{
 			Text = title,
 			Location = new Point(0, 114),
@@ -34,7 +45,7 @@ internal sealed class ActionGroup : Panel
 			Margin = Padding.Empty,
 			BackColor = Color.Black
 		};
-		base.Controls.Add(value);
+		base.Controls.Add(captionLabel);
 		base.Controls.Add(Buttons);
 	}
 }

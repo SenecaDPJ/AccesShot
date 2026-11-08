@@ -11,7 +11,7 @@ using System.Drawing;
 using System.Collections.Generic;
 using System.Runtime.Versioning;
 using System.Diagnostics.CodeAnalysis;
-[assembly: System.Reflection.AssemblyVersion("2.11.0.0")]
+[assembly: System.Reflection.AssemblyVersion("3.0.0.0")]
 public sealed class CreationStyle {
  public bool ThemeColors {get;set;}
  public int? HoverBackground {get;set;}

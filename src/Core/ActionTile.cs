@@ -7,7 +7,20 @@ namespace AccessShot;
 
 internal sealed class ActionTile : Control
 {
-	private readonly string title;
+	private string title;
+
+	public string SpanishTitle { get; }
+
+	public string Title
+	{
+		get => title;
+		set
+		{
+			title = value;
+			AccessibleName = value;
+			Invalidate();
+		}
+	}
 
 	private string normalGlyph;
 
@@ -84,6 +97,7 @@ internal sealed class ActionTile : Control
 
 	public ActionTile(string text, string glyph, string hotGlyph, Color accent, bool toggle, Color activeColor, Color hoverColor)
 	{
+		SpanishTitle = text;
 		title = text;
 		normalGlyph = glyph;
 		hoverGlyph = hotGlyph;

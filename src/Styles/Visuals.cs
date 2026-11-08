@@ -22,7 +22,7 @@ public static class AccessShotVisuals {
   }
   return p;
  }
- public static void Paint(Control tile,PaintEventArgs args,object entry,bool dark,bool selected) {
+ public static void Paint(Control tile,PaintEventArgs args,object entry,bool dark,bool selected,string? displayTitle=null) {
   if(tile.Width<4 || tile.Height<4)return;
   TileState state=State(tile);int kind=StylePolicy.Kind(entry),orientation=((StylePolicy.Get<int>(entry,"Orientation")%360)+360)%360;
   int width=StylePolicy.Get<int>(entry,"Width"),height=StylePolicy.Get<int>(entry,"Height");
@@ -44,7 +44,7 @@ public static class AccessShotVisuals {
   TileColors colors=StylePolicy.Colors(entry,dark,state.Hover,selected);
   using var brush=new SolidBrush(colors.Background);using var pen=new Pen(colors.Border,selected?2.5f:1.2f);
   g.FillPath(brush,path);g.DrawPath(pen,path);
-  string title=StylePolicy.Get<string>(entry,"Title");
+  string title=displayTitle??StylePolicy.Get<string>(entry,"Title");
   float size=Math.Clamp(StylePolicy.Get<int>(entry,"FontSize"),8,48);Font? font=null;
   int tip=kind==1?(int)Math.Min(24,tile.Height*.36f):0;
   var bounds=new RectangleF(10,6,Math.Max(1,tile.Width-20-tip/2),Math.Max(1,tile.Height-12));
@@ -56,24 +56,26 @@ public static class AccessShotVisuals {
   using(font)using(var textBrush=new SolidBrush(colors.Text))using(var format=new StringFormat {Alignment=StringAlignment.Center,LineAlignment=StringAlignment.Center,Trimming=StringTrimming.EllipsisCharacter})g.DrawString(title,font,textBrush,bounds,format);
  }
  static void Refresh(object form) {StylePolicy.Invoke(form,"Save");StylePolicy.Invoke(form,"Render");}
- public static void Attach(ContextMenuStrip menu,object form,object entry,Control tile) {
+ public static void Attach(ContextMenuStrip menu,object form,object entry,Control tile,Func<string,string>? translate=null) {
+  Func<string,string> t=translate??(value=>value);
   State(tile);tile.MouseEnter+=(_,_)=>{State(tile).Hover=true;tile.Invalidate();};
   tile.MouseLeave+=(_,_)=>{State(tile).Hover=false;tile.Invalidate();};
   menu.Items.Add(new ToolStripSeparator());
-  menu.Items.Add("Color al pasar el ratón…",null,(_,_)=>{
+  menu.Items.Add(t("Color al pasar el ratón…"),null,(_,_)=>{
    var current=StylePolicy.Colors(entry,(bool)StylePolicy.Field(form,"dark"),true,false);
    using var dialog=new ColorDialog {Color=current.Background,FullOpen=true,AnyColor=true};
    if(dialog.ShowDialog((IWin32Window)form)!=DialogResult.OK)return;
    StylePolicy.State(entry).HoverBackground=dialog.Color.ToArgb();Refresh(form);
   });
-  var reset=menu.Items.Add("Restablecer color al pasar el ratón",null,(_,_)=>{StylePolicy.State(entry).HoverBackground=null;Refresh(form);});
+  var reset=menu.Items.Add(t("Restablecer color al pasar el ratón"),null,(_,_)=>{StylePolicy.State(entry).HoverBackground=null;Refresh(form);});
   reset.Enabled=StylePolicy.State(entry).HoverBackground.HasValue;
-  menu.Items.Add("Restaurar colores del tema",null,(_,_)=>{
+  menu.Items.Add(t("Restaurar colores del tema"),null,(_,_)=>{
    var s=StylePolicy.State(entry);s.ThemeColors=true;s.HoverBackground=null;Refresh(form);
   });
  }
- public static void Load(object form) {
-  try {StylePolicy.Load(form);}catch(Exception ex) {MessageBox.Show((IWin32Window)form,"No se pudieron leer los estilos guardados: "+ex.Message,"AccessShot 2.11",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
+ public static void Load(object form,Func<string,string>? translate=null) {
+  Func<string,string> t=translate??(value=>value);
+  try {StylePolicy.Load(form);}catch(Exception ex) {MessageBox.Show((IWin32Window)form,string.Format(t("No se pudieron leer los estilos guardados: {0}"),t(ex.Message)),"AccesShot 3.0",MessageBoxButtons.OK,MessageBoxIcon.Warning);}
  }
 }
 

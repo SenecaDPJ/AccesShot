@@ -1,26 +1,28 @@
-# AccesShot 2.16
+# AccesShot 3.0 — en preparación
 
 [Español](README.md) · [English](README.en.md)
 
 ![AccesShot](assets/social-preview.png)
 
-**Tu PC a un clic 🥷🏻**
+**Tu PC a un clic y en tu idioma 🥷🏻**
 
 Aplicaciones, enlaces y etiquetas, organizados en un lienzo a medida de tus pantallas.
 
-AccesShot reúne tus programas, aplicaciones modernas de Windows y páginas web en una sola pantalla. Crea accesos, organízalos con etiquetas y capas, y personaliza su aspecto con colores y temas. Es portátil y está diseñado para Windows 11 x64.
+AccesShot reúne tus programas, aplicaciones modernas de Windows y páginas web en una sola pantalla. Crea accesos, organízalos con etiquetas y capas, y personaliza su aspecto con colores y temas. La versión 3.0 incorpora un selector Español/Inglés en la barra superior; abre en español y recuerda el idioma elegido. Los nombres y destinos personalizados de tus accesos se conservan. Es portátil y está diseñado para Windows 11 x64.
 
 - 🖱️Ten a mano y como tú quieres todos tus accesos sin importar su origen.
 - 🗂️Organízate como quieras sin molestas limitaciones.
 - 🖥️Lienzo personalizable donde el límite está en tus monitores disponibles.
 - 🎨Tunea tus accesos con colores, efectos, tamaños y capas.
 
-**Windows 11 x64 · Portátil · v2.16 · MIT**
+**Windows 11 x64 · Portátil · código 3.0 en preparación · MIT**
 
 ## Descargar e iniciar
 
 [Descargar AccesShot 2.16 (ZIP portátil para Windows x64)](https://github.com/SenecaDPJ/AccesShot/releases/download/v2.16/AccessShot-2.16-portable-Windows-x64.zip)
 [Ver la release 2.16 y sus notas](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.16)
+
+La 3.0 todavía no tiene paquete portable ni release. El ZIP descargable más reciente es la versión 2.16.
 
 El repositorio y la release son públicos; no hace falta iniciar sesión en GitHub para descargar el ZIP.
 
@@ -44,6 +46,7 @@ El repositorio y la release son públicos; no hace falta iniciar sesión en GitH
 - Copias JSON desde el botón del lienzo; Opciones permite cambiar la carpeta y restaurar una copia.
 - Ctrl + O abre Opciones dentro de AccesShot.
 - Temas oscuro y claro, selección y color al pasar el ratón.
+- Interfaz en español e inglés, con español como idioma inicial y una bandera que indica el idioma activo.
 - Confirmación antes de abrir URL o GitHub.
 
 ## Apps modernas de Windows
@@ -55,7 +58,7 @@ En **CREAR → APLICACIÓN → Buscar apps de Windows…** puedes buscar aplicac
 
 ## Datos
 
-La configuración se guarda por usuario en `%APPDATA%\AccessShot\entries.json`. En un perfil nuevo, AccesShot crea ese archivo con la disposición inicial de `assets/initial-layout.json`; si el archivo ya existe, conserva los accesos guardados. La última operación deshacible y las preferencias de copia se guardan en archivos auxiliares de esa carpeta. Al migrar por primera vez, AccesShot conserva una copia `.pre-2.15.bak`. La disposición inicial del autor se incluye en el repositorio a petición suya. Las copias JSON personales pueden incluir rutas y URL; guárdalas en una carpeta privada y no las subas a Git.
+La configuración se guarda por usuario en `%APPDATA%\AccessShot\entries.json`. En un perfil nuevo, AccesShot crea ese archivo con la disposición inicial de `assets/initial-layout.json`; si el archivo ya existe, conserva los accesos guardados. La última operación deshacible, las preferencias de copia y el idioma elegido se guardan en archivos auxiliares de esa carpeta. El idioma inicial es español y la preferencia se almacena en `language.json`. Al migrar por primera vez, AccesShot conserva una copia `.pre-2.15.bak`. La disposición inicial del autor se incluye en el repositorio a petición suya. Las copias JSON personales pueden incluir rutas y URL; guárdalas en una carpeta privada y no las subas a Git.
 
 Una copia contiene los accesos y su disposición, no los programas ni los archivos a los que apuntan. En otro PC algunas rutas quizá necesiten ajustes.
 
@@ -63,7 +66,9 @@ Una copia contiene los accesos y su disposición, no los programas ni los archiv
 
 La 2.16 coloca el aviso de desbordamiento en la parte superior del lienzo, sin tapar la firma, restaura el icono de la ventana y actualiza la disposición inicial para perfiles nuevos. Las configuraciones existentes se conservan. Consulta [la guía de entrega](docs/ENTREGA_2.16.md), [validación](docs/VALIDACION_2.16.md) y [desarrollo](docs/DESARROLLO.md).
 
-Las releases 2.12, 2.13, 2.14 y 2.15 se conservan. La aplicación continúa siendo portable para Windows 11 x64.
+La rama `main` contiene ya el código fuente 3.0 con selector Español/Inglés y la traducción de la interfaz. La versión abre en español, recuerda la preferencia por usuario y conserva los nombres personalizados. La 3.0 aún no está empaquetada ni publicada como release; la descarga enlazada arriba sigue siendo la release 2.16.
+
+Las releases 2.12 a 2.16 se conservan. La aplicación continúa siendo portable para Windows 11 x64.
 
 ## Autoría y licencia
 

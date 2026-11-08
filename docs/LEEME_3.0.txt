@@ -1,0 +1,21 @@
+AccesShot 3.0 — Windows 11 x64
+
+Extrae el ZIP completo. Abre AccessShot.exe y conserva la carpeta Aplicacion junto al ejecutable.
+
+Español
+- AccesShot abre en español la primera vez.
+- Pulsa el botón vertical IDIOMA, entre MODOS y OPCIONES, para alternar entre español e inglés. La bandera indica el idioma seleccionado.
+- La selección se guarda en %APPDATA%\AccessShot\language.json.
+- Los nombres y destinos de tus accesos se conservan al cambiar de idioma.
+
+English
+- AccesShot opens in Spanish the first time.
+- Click the vertical LANGUAGE button between MODES and OPTIONS to switch between Spanish and English. The flag shows the selected language.
+- Your choice is saved in %APPDATA%\AccessShot\language.json.
+- Your shortcut names and targets stay as they are when you switch languages.
+
+La configuración del lienzo se guarda por usuario en %APPDATA%\AccessShot\entries.json. Las copias JSON pueden incluir rutas y URL; mantenlas privadas.
+
+Canvas configuration is stored per user in %APPDATA%\AccessShot\entries.json. JSON backups may contain paths and URLs; keep them private.
+
+© David De Prado · 2026 · MIT

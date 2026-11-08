@@ -9,7 +9,7 @@ internal sealed class NumericDialog : Form
 
 	public int Value => (int)number.Value;
 
-	public NumericDialog(string title, string prompt, int value, int min, int max)
+	public NumericDialog(string title, string prompt, int value, int min, int max, string acceptText, string cancelText)
 	{
 		Text = title;
 		base.Width = 390;
@@ -37,7 +37,7 @@ internal sealed class NumericDialog : Form
 		base.Controls.Add(number);
 		Button button = new Button
 		{
-			Text = "Aceptar",
+			Text = acceptText,
 			Left = 180,
 			Top = 70,
 			Width = 80,
@@ -45,7 +45,7 @@ internal sealed class NumericDialog : Form
 		};
 		Button button2 = new Button
 		{
-			Text = "Cancelar",
+			Text = cancelText,
 			Left = 275,
 			Top = 70,
 			Width = 80,
