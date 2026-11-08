@@ -1,4 +1,4 @@
-# AccesShot 3.0 — en preparación
+# AccesShot 3.0
 
 [Español](README.md) · [English](README.en.md)
 
@@ -15,14 +15,14 @@ AccesShot reúne tus programas, aplicaciones modernas de Windows y páginas web 
 - 🖥️Lienzo personalizable donde el límite está en tus monitores disponibles.
 - 🎨Tunea tus accesos con colores, efectos, tamaños y capas.
 
-**Windows 11 x64 · Portátil · código 3.0 en preparación · MIT**
+**Windows 11 x64 · Portátil · versión 3.0 · MIT**
 
 ## Descargar e iniciar
 
-[Descargar AccesShot 2.16 (ZIP portátil para Windows x64)](https://github.com/SenecaDPJ/AccesShot/releases/download/v2.16/AccessShot-2.16-portable-Windows-x64.zip)
-[Ver la release 2.16 y sus notas](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.16)
+[Descargar AccesShot 3.0 (ZIP portátil para Windows x64)](https://github.com/SenecaDPJ/AccesShot/releases/download/v3.0/AccessShot-3.0-portable-Windows-x64.zip)
+[Ver la release 3.0 y sus notas](https://github.com/SenecaDPJ/AccesShot/releases/tag/v3.0)
 
-La 3.0 todavía no tiene paquete portable ni release. El ZIP descargable más reciente es la versión 2.16.
+La release 3.0 es la versión descargable más reciente. Incluye el runtime necesario y no requiere instalación.
 
 El repositorio y la release son públicos; no hace falta iniciar sesión en GitHub para descargar el ZIP.
 
@@ -64,11 +64,9 @@ Una copia contiene los accesos y su disposición, no los programas ni los archiv
 
 ## Estado del proyecto
 
-La 2.16 coloca el aviso de desbordamiento en la parte superior del lienzo, sin tapar la firma, restaura el icono de la ventana y actualiza la disposición inicial para perfiles nuevos. Las configuraciones existentes se conservan. Consulta [la guía de entrega](docs/ENTREGA_2.16.md), [validación](docs/VALIDACION_2.16.md) y [desarrollo](docs/DESARROLLO.md).
+La 3.0 incorpora la interfaz en español e inglés. La aplicación abre en español, recuerda el idioma elegido por usuario y conserva los nombres personalizados de accesos. Consulta las [notas de la release](RELEASE_NOTES_v3.0.md), la [validación del paquete](docs/VALIDACION_3.0.md), la [guía de entrega](docs/ENTREGA_3.0.md) y [desarrollo](docs/DESARROLLO.md).
 
-La rama `main` contiene ya el código fuente 3.0 con selector Español/Inglés y la traducción de la interfaz. La versión abre en español, recuerda la preferencia por usuario y conserva los nombres personalizados. La 3.0 aún no está empaquetada ni publicada como release; la descarga enlazada arriba sigue siendo la release 2.16.
-
-Las releases 2.12 a 2.16 se conservan. La aplicación continúa siendo portable para Windows 11 x64.
+Las releases 2.12 a 2.16 se conservan. AccesShot sigue siendo portable para Windows 11 x64.
 
 ## Autoría y licencia
 

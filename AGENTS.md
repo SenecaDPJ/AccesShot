@@ -1,12 +1,12 @@
 # AccesShot — proyecto local
 
-Lee `docs/DESARROLLO.md`, `docs/VALIDACION.md` y, para publicar la versión actual, `docs/ENTREGA_2.15.md`.
+Lee `docs/DESARROLLO.md`, `docs/VALIDACION.md` y, para publicar la versión actual, `docs/ENTREGA_3.0.md`.
 
 ## Estado
 
-- Repositorio privado: `SenecaDPJ/AccesShot`, rama predeterminada `main`.
-- La release más reciente de GitHub es `v2.14`. Su README en `main` todavía enlaza la descarga `v2.13`; comprobar ambas páginas después de cualquier entrega.
-- AccesShot 2.15 está en preparación local. Antes de crear la release, integrar sus fuentes y sus README en `main`; el tag `v2.15` debe apuntar al commit ya integrado.
+- Repositorio público: `SenecaDPJ/AccesShot`, rama predeterminada `main`.
+- La release estable más reciente es `v3.0`, con paquete portable para Windows 11 x64 y documentación en español e inglés.
+- `main` contiene las fuentes, README, notas y documentos de entrega correspondientes a `v3.0`.
 - No publicar, cambiar la visibilidad, añadir colaboradores ni forzar ramas sin instrucción explícita del usuario.
 
 ## Invariantes
@@ -24,4 +24,4 @@ Lee `docs/DESARROLLO.md`, `docs/VALIDACION.md` y, para publicar la versión actu
 
 Los módulos son fuentes editables. El núcleo recuperado es consulta: no se afirma que su reconstrucción integral esté validada. La reflexión depende de nombres de campos/cierres que puede transformar el descompilador. No activar publicación automática basada en ese snapshot.
 
-Para la 2.15, integrar primero fuentes y ambos README en `main`; solo después crear el tag y la release desde el commit integrado. Verificar que la página principal y los dos README enlazan a `v2.15`, que GitHub la marca como **Latest** y que el SHA del asset coincide. No publicar ni alterar GitHub sin instrucción explícita; no borrar ni forzar sobrescrituras.
+Para futuras publicaciones, integrar primero fuentes, ambos README y documentos de entrega en `main`; solo después crear el tag y la release desde el commit integrado. Verificar que la página principal y ambos README enlazan a la nueva versión, que GitHub la marca como **Latest** y que el SHA del asset coincide. No publicar ni alterar GitHub sin instrucción explícita; no borrar ni forzar sobrescrituras.

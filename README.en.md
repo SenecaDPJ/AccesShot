@@ -1,4 +1,4 @@
-# AccesShot 3.0 — In preparation
+# AccesShot 3.0
 
 [Español](README.md) · [English](README.en.md)
 
@@ -15,14 +15,14 @@ AccesShot brings your programs, modern Windows apps and web pages together on on
 - 🖥️ A customizable canvas that spans your available monitors.
 - 🎨 Style your shortcuts with colors, effects, sizes and layers.
 
-**Windows 11 x64 · Portable · 3.0 source in preparation · MIT**
+**Windows 11 x64 · Portable · version 3.0 · MIT**
 
 ## Download and start
 
-[Download AccesShot 2.16 (portable ZIP for Windows x64)](https://github.com/SenecaDPJ/AccesShot/releases/download/v2.16/AccessShot-2.16-portable-Windows-x64.zip)
-[View the 2.16 release and its notes](https://github.com/SenecaDPJ/AccesShot/releases/tag/v2.16)
+[Download AccesShot 3.0 (portable ZIP for Windows x64)](https://github.com/SenecaDPJ/AccesShot/releases/download/v3.0/AccessShot-3.0-portable-Windows-x64.zip)
+[View the 3.0 release and its notes](https://github.com/SenecaDPJ/AccesShot/releases/tag/v3.0)
 
-Version 3.0 does not have a portable package or release yet. The latest downloadable ZIP is version 2.16.
+Release 3.0 is the latest downloadable version. It includes the required runtime and needs no installation.
 
 The repository and release are public, so you can download the ZIP without signing in to GitHub.
 
@@ -61,9 +61,7 @@ A backup contains shortcuts and their layout, not the programs or files they poi
 
 ## Project status
 
-Version 2.16 moves the off-screen notice to the top of the canvas, restores the window and taskbar icons, and updates the starter layout for new profiles. Existing configurations are preserved. See the [release handoff](docs/ENTREGA_2.16.md), [validation](docs/VALIDACION_2.16.md) and [development notes](docs/DESARROLLO.md).
-
-The `main` branch now contains the 3.0 source with the English/Spanish selector and translated interface. The app opens in Spanish, remembers the per-user preference and preserves custom shortcut names. Version 3.0 has not been packaged or published as a release yet, so the download link above still points to release 2.16.
+Version 3.0 adds a Spanish and English interface. The app opens in Spanish, remembers each user's language choice and preserves custom shortcut names. See the [release notes](RELEASE_NOTES_v3.0.md), [package validation](docs/VALIDACION_3.0.md), [release handoff](docs/ENTREGA_3.0.md) and [development notes](docs/DESARROLLO.md).
 
 Releases 2.12 through 2.16 remain available. AccesShot is portable for Windows 11 x64.
 

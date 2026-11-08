@@ -1,12 +1,13 @@
 # AccesShot — Cambios
 
-## 3.0 — en preparación
+## 3.0 — 2026-11-08
 - Selector de idioma español/inglés en la barra superior, entre MODOS y OPCIONES; la bandera indica el idioma activo.
 - Español es el idioma predeterminado. La elección manual se guarda en `%APPDATA%\AccessShot\language.json`.
 - Traducción al inglés de la interfaz, cuadros de diálogo, menús, confirmaciones y buscador de aplicaciones de Windows.
 - Los ejemplos incluidos se muestran en el idioma elegido; los nombres y destinos personalizados se conservan.
 - Añade `scripts/Build-3.0.ps1` para preparar el paquete portátil sobre la base verificada 2.16.
-- El código se integra en `main`; el paquete y la release 3.0 siguen pendientes.
+- El paquete portable autocontenido para Windows 11 x64 incluye el runtime, el lanzador y los avisos de licencia.
+- Publicación de la release `v3.0`; las releases 2.12 a 2.16 se conservan.
 
 ## 2.16 — 2026-10-27
 - Reubica el aviso de objetos fuera de la vista en la zona superior del lienzo, sin cubrir la firma.
